@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jennings Family Healthcare – Doucet Family Healthcare</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F4EFE4;
+    --cream-light: #FAF7F2;
+    --cream-dark: #E8E0D0;
+    --charcoal: #2A2118;
+    --charcoal-soft: #3D3024;
+    --teal: #5F9E8E;
+    --teal-dark: #4A7D6F;
+    --teal-light: #8FBFB3;
+    --teal-pale: #D4EAE5;
+    --gold: #B8965A;
+    --text-body: #4A3E30;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--charcoal);
+    color: var(--cream-light);
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .topbar a { color: var(--teal-light); text-decoration: none; }
+  .topbar span { opacity: 0.7; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--cream-light);
+    border-bottom: 1px solid var(--cream-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(42,33,24,0.06);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .logo-wrap { display: flex; flex-direction: column; align-items: flex-start; line-height: 1; }
+  .logo-name { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.3rem; letter-spacing: 0.2em; color: var(--charcoal); text-transform: uppercase; }
+  .logo-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.75rem; color: var(--teal); letter-spacing: 0.12em; margin-top: 2px; }
+  .logo-flower { color: var(--teal); font-size: 1.1rem; margin-right: 10px; }
+  .logo-row { display: flex; align-items: center; text-decoration: none; }
+
+  nav { display: flex; align-items: center; gap: 6px; }
+  nav a {
+    font-family: 'Jost', sans-serif; font-weight: 400; font-size: 0.78rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal-soft);
+    text-decoration: none; padding: 6px 12px; border-radius: 2px;
+    transition: color 0.2s; position: relative;
+  }
+  nav a:hover { color: var(--teal-dark); }
+  nav a::after { content: ''; position: absolute; bottom: 2px; left: 12px; right: 12px; height: 1px; background: var(--teal); transform: scaleX(0); transition: transform 0.25s ease; }
+  nav a:hover::after { transform: scaleX(1); }
+
+  .nav-cta { background: var(--teal); color: var(--cream-light) !important; padding: 9px 20px !important; border-radius: 2px; letter-spacing: 0.12em; transition: background 0.2s !important; }
+  .nav-cta:hover { background: var(--teal-dark) !important; color: #fff !important; }
+  .nav-cta::after { display: none !important; }
+
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; z-index: 201; }
+  .menu-toggle span { display: block; width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: all 0.3s ease; }
+  .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  .mobile-nav { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--cream-light); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 8px; opacity: 0; transition: opacity 0.3s ease; }
+  .mobile-nav.open { display: flex; opacity: 1; }
+  .mobile-nav a { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--charcoal); text-decoration: none; padding: 10px 20px; transition: color 0.2s; }
+  .mobile-nav a:hover { color: var(--teal); }
+  .mobile-nav .nav-cta { margin-top: 20px; font-family: 'Jost', sans-serif; font-size: 0.85rem; background: var(--teal); color: var(--cream-light) !important; padding: 14px 36px !important; border-radius: 2px; letter-spacing: 0.15em; text-transform: uppercase; }
+
+  /* ── CLINIC HERO ── */
+  .clinic-hero {
+    position: relative;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #EDE5D5 0%, #F4EFE4 50%, #E8F3F0 100%);
+    overflow: hidden;
+  }
+
+  .clinic-hero-lines {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(90deg, rgba(95,158,142,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(95,158,142,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .clinic-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .breadcrumb {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: var(--text-body);
+  }
+  .breadcrumb a { color: var(--teal); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--teal-dark); }
+  .breadcrumb span { opacity: 0.5; margin: 0 8px; }
+
+  .clinic-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .clinic-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 3.2rem;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+
+  .clinic-hero h1 em { font-style: italic; color: var(--teal-dark); }
+
+  .clinic-badge {
+    display: inline-block;
+    background: var(--teal-pale);
+    color: var(--teal-dark);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .clinic-hero-desc {
+    font-size: 1rem;
+    color: var(--text-body);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 500px;
+  }
+
+  .clinic-details-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .clinic-details-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-body);
+  }
+
+  .clinic-details-list li .detail-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-pale);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 0.9rem;
+  }
+
+  .clinic-hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--charcoal); color: var(--cream-light);
+    padding: 14px 32px; font-family: 'Jost', sans-serif; font-weight: 400;
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; transition: background 0.2s, transform 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--charcoal-soft); transform: translateY(-1px); }
+
+  .btn-outline {
+    border: 1.5px solid var(--teal); color: var(--teal-dark);
+    padding: 13px 32px; font-family: 'Jost', sans-serif; font-weight: 400;
+    font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px; transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { background: var(--teal); color: #fff; transform: translateY(-1px); }
+
+  /* Clinic info card on hero right */
+  .clinic-info-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(95,158,142,0.15);
+    border-radius: 4px;
+    padding: 36px 32px;
+    box-shadow: 0 8px 40px rgba(42,33,24,0.08);
+  }
+
+  .clinic-info-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; font-size: 1.3rem;
+    color: var(--charcoal); margin-bottom: 20px;
+  }
+
+  .hours-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  .hours-table tr { border-bottom: 1px solid var(--cream-dark); }
+  .hours-table tr:last-child { border-bottom: none; }
+  .hours-table td { padding: 8px 0; font-size: 0.85rem; color: var(--text-body); }
+  .hours-table td:last-child { text-align: right; font-weight: 400; }
+  .hours-today { color: var(--teal-dark); font-weight: 500 !important; }
+
+  .clinic-info-divider { height: 1px; background: var(--cream-dark); margin: 16px 0; }
+
+  .clinic-info-row {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--text-body); margin-bottom: 10px;
+  }
+  .clinic-info-row a { color: var(--teal-dark); text-decoration: none; }
+  .clinic-info-row a:hover { color: var(--teal); }
+
+  /* ── SECTIONS ── */
+  section { padding: 90px 40px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; display: block; text-align: center; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2.8rem; color: var(--charcoal); text-align: center; margin-bottom: 16px; line-height: 1.2; }
+  .section-divider { width: 60px; height: 1px; background: var(--teal); margin: 0 auto 16px; }
+  .section-sub { text-align: center; color: var(--text-body); font-size: 0.95rem; max-width: 560px; margin: 0 auto 60px; line-height: 1.8; }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 12px; color: var(--teal); font-size: 1rem; opacity: 0.6; }
+  .ornament-line { width: 50px; height: 1px; background: currentColor; }
+
+  /* ── SERVICES ── */
+  .services-section { background: var(--cream); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card {
+    background: var(--cream-light); border: 1px solid var(--cream-dark); border-radius: 4px;
+    padding: 28px 24px; text-align: center; transition: all 0.3s; position: relative; overflow: hidden;
+  }
+  .service-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transition: transform 0.3s ease; }
+  .service-card:hover { border-color: var(--teal-pale); box-shadow: 0 12px 40px rgba(42,33,24,0.08); transform: translateY(-4px); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon { width: 50px; height: 50px; background: var(--teal-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 1.3rem; }
+  .service-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.05rem; color: var(--charcoal); margin-bottom: 8px; }
+  .service-card p { font-size: 0.82rem; color: var(--text-body); line-height: 1.7; }
+
+
+
+  /* ── BOOKING / SCHEDULER ── */
+  .booking-section { background: var(--cream-light); }
+
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .booking-info h2 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 2.4rem; color: var(--charcoal); margin-bottom: 16px; }
+  .booking-info p { color: var(--text-body); font-size: 0.9rem; line-height: 1.8; margin-bottom: 28px; }
+
+  .booking-perks { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .booking-perks li { display: flex; align-items: center; gap: 12px; font-size: 0.88rem; color: var(--text-body); }
+  .booking-perks li::before { content: '✦'; color: var(--teal); font-size: 0.6rem; flex-shrink: 0; }
+
+  .scheduler-wrap { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 4px; padding: 32px; }
+  .scheduler-wrap h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--charcoal); margin-bottom: 24px; text-align: center; }
+
+  .cal-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .cal-nav button { background: none; border: 1px solid var(--cream-dark); border-radius: 2px; width: 34px; height: 34px; cursor: pointer; font-size: 1rem; color: var(--charcoal); transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .cal-nav button:hover { border-color: var(--teal); color: var(--teal); }
+  .cal-month { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: var(--charcoal); }
+
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; margin-bottom: 20px; }
+  .cal-day-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal-soft); padding: 6px 0; font-weight: 500; }
+  .cal-day { padding: 8px 4px; font-size: 0.82rem; border-radius: 2px; cursor: default; color: var(--text-body); transition: all 0.15s; }
+  .cal-day.empty { visibility: hidden; }
+  .cal-day.past { color: var(--cream-dark); }
+  .cal-day.available { cursor: pointer; background: var(--teal-pale); color: var(--charcoal); font-weight: 500; }
+  .cal-day.available:hover { background: var(--teal); color: #fff; }
+  .cal-day.selected { background: var(--teal); color: #fff; font-weight: 600; }
+  .cal-day.weekend { color: var(--cream-dark); }
+
+  .cal-legend { display: flex; gap: 16px; justify-content: center; margin-bottom: 20px; font-size: 0.72rem; color: var(--text-body); }
+  .cal-legend span { display: flex; align-items: center; gap: 5px; }
+  .cal-legend-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .cal-legend-dot.avail { background: var(--teal-pale); }
+  .cal-legend-dot.selected { background: var(--teal); }
+
+  .time-slots { display: none; margin-bottom: 20px; }
+  .time-slots.visible { display: block; }
+  .time-slots-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 10px; font-weight: 500; }
+  .time-slots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .time-slot { padding: 10px 8px; border: 1px solid var(--cream-dark); border-radius: 2px; text-align: center; font-size: 0.82rem; font-family: 'Jost', sans-serif; cursor: pointer; transition: all 0.15s; color: var(--charcoal); background: var(--cream-light); }
+  .time-slot:hover { border-color: var(--teal); color: var(--teal); }
+  .time-slot.selected { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  .confirm-section { display: none; }
+  .confirm-section.visible { display: block; }
+  .confirm-summary { background: var(--cream-light); border: 1px solid var(--cream-dark); border-radius: 2px; padding: 16px; margin-bottom: 16px; font-size: 0.85rem; color: var(--text-body); line-height: 1.8; }
+  .confirm-summary strong { color: var(--charcoal); }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--charcoal); margin-bottom: 6px; }
+  .form-group input, .form-group select { width: 100%; padding: 12px 16px; border: 1px solid var(--cream-dark); border-radius: 2px; background: var(--cream-light); font-family: 'Jost', sans-serif; font-size: 0.88rem; color: var(--charcoal); transition: border-color 0.2s; outline: none; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--teal); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .btn-form { width: 100%; background: var(--teal); color: #fff; padding: 14px; border: none; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 6px; }
+  .btn-form:hover { background: var(--teal-dark); }
+  .btn-form:disabled { background: var(--cream-dark); cursor: not-allowed; }
+
+  /* ── OTHER LOCATIONS ── */
+  .other-locations { background: var(--charcoal); color: var(--cream-light); padding: 60px 40px; }
+  .other-locations .section-label { color: var(--teal-light); }
+  .other-locations .section-title { color: var(--cream-light); font-size: 2rem; }
+  .other-locations .section-divider { background: var(--teal-light); }
+
+  .other-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 40px auto 0; }
+
+  .other-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(95,158,142,0.2);
+    border-radius: 4px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+  }
+
+  .other-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+  .other-card h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.15rem; color: var(--cream-light); margin-bottom: 6px; }
+  .other-card p { font-size: 0.82rem; color: rgba(244,239,228,0.6); line-height: 1.5; margin-bottom: 4px; }
+  .other-card .other-phone { color: var(--teal-light); font-size: 0.82rem; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--charcoal); color: var(--cream-light); padding: 60px 40px 30px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+  .footer-brand .logo-name { color: var(--cream-light); font-size: 1.1rem; }
+  .footer-brand .logo-sub { color: var(--teal-light); }
+  .footer-desc { font-size: 0.82rem; opacity: 0.6; line-height: 1.8; margin-top: 14px; }
+  .footer-col h4 { font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 16px; }
+  .footer-col a { display: block; color: rgba(244,239,228,0.6); text-decoration: none; font-size: 0.83rem; margin-bottom: 8px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--cream-light); }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75rem; opacity: 0.45; flex-wrap: wrap; gap: 10px; }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 46px; height: 46px; background: var(--charcoal); color: var(--cream-light); border: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 90; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+  .back-to-top:hover { background: var(--teal); transform: translateY(-2px); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .clinic-hero h1, .clinic-badge, .clinic-hero-desc, .clinic-hero-btns { animation: fadeUp 0.7s ease both; }
+  .clinic-badge { animation-delay: 0.1s; }
+  .clinic-hero h1 { animation-delay: 0.2s; }
+  .clinic-hero-desc { animation-delay: 0.35s; }
+  .clinic-hero-btns { animation-delay: 0.5s; }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .clinic-hero-grid, .booking-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid, .other-grid { grid-template-columns: 1fr; }
+    .clinic-hero h1 { font-size: 2.4rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .menu-toggle { display: flex; }
+  }
+
+  @media (max-width: 600px) {
+    .clinic-hero h1 { font-size: 2rem; }
+    .section-title { font-size: 2.2rem; }
+    section { padding: 60px 20px; }
+    .clinic-hero { padding: 60px 20px; }
+    .header-inner { padding: 0 20px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>📍 Jennings, Louisiana</span>
+  <span>⏰ Mon–Thu: 8:00 AM – 5:00 PM · Fri: 8:00 AM – 12:00 PM</span>
+  <a href="tel:+13372463210">📞 (337) 246-3210</a>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-row">
+      <span class="logo-flower">✿</span>
+      <div class="logo-wrap">
+        <span class="logo-name">Doucet Family Healthcare</span>
+        <span class="logo-sub">Jennings Family Healthcare</span>
+      </div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#locations">Locations</a>
+      <a href="#services">Services</a>
+      <a href="#book" class="nav-cta">Schedule Appointment</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="index.html#locations" onclick="closeMenu()">Locations</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#book" class="nav-cta" onclick="closeMenu()">Schedule Appointment</a>
+</div>
+
+<!-- CLINIC HERO -->
+<section class="clinic-hero">
+  <div class="clinic-hero-lines"></div>
+  <div class="clinic-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="index.html#locations">Locations</a><span>/</span>
+      Jennings
+    </div>
+    <div class="clinic-hero-grid">
+      <div>
+        <div class="clinic-badge">Rural Health Clinic</div>
+        <h1>Jennings Family <em>Healthcare</em></h1>
+        <p class="clinic-hero-desc">Serving the Jennings community with accessible family healthcare. Our clinic brings the Doucet standard of compassionate rural healthcare to Jefferson Davis Parish.</p>
+        <ul class="clinic-details-list">
+          <li><div class="detail-icon">📍</div> 1914 Johnson Street, Jennings, LA 70546</li>
+          <li><div class="detail-icon">📞</div> (337) 246-3210</li>
+          <li><div class="detail-icon">🕐</div> Mon–Thu: 8:00 AM – 5:00 PM · Fri: 8:00 AM – 12:00 PM</li>
+          <li><div class="detail-icon">✓</div> Walk-ins Welcome · Accepting New Patients</li>
+        </ul>
+        <div class="clinic-hero-btns">
+          <a href="#book" class="btn-primary">Schedule an Appointment</a>
+          <a href="tel:+13372463210" class="btn-outline">Call Now</a>
+        </div>
+      </div>
+      <div class="clinic-info-card">
+        <h3>Hours of Operation</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 12:00 PM</td></tr>
+          <tr><td>Saturday</td><td>Closed</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <div class="clinic-info-divider"></div>
+        <div class="clinic-info-row">📞 <a href="tel:+13372463210">(337) 246-3210</a></div>
+        <div class="clinic-info-row">📠 Fax: (337) 246-3106</div>
+        <div class="clinic-info-row">📍 1914 Johnson Street, Jennings, LA 70546</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="ornament"><span class="ornament-line"></span>✦<span class="ornament-line"></span></div>
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title">Services at Jennings</h2>
+    <div class="section-divider"></div>
+    <div class="services-grid">
+      <div class="service-card reveal"><div class="service-icon">🌱</div><h3>Primary Care</h3><p>Comprehensive family medicine for patients of all ages, from routine checkups to ongoing health management.</p></div>
+      <div class="service-card reveal"><div class="service-icon">⚡</div><h3>Walk-In Care</h3><p>No appointment needed for urgent health concerns. Walk in during business hours for prompt evaluation and treatment.</p></div>
+      <div class="service-card reveal"><div class="service-icon">👶</div><h3>Pediatric Care</h3><p>Well-child visits, developmental screenings, and childhood vaccinations in a family-friendly environment.</p></div>
+      <div class="service-card reveal"><div class="service-icon">💊</div><h3>Chronic Disease Management</h3><p>Ongoing care plans for diabetes, hypertension, asthma, and other chronic conditions.</p></div>
+      <div class="service-card reveal"><div class="service-icon">👩</div><h3>Women's Health</h3><p>OB/GYN services, annual wellness exams, and women's health screenings from our specialized providers.</p></div>
+      <div class="service-card reveal"><div class="service-icon">💉</div><h3>Immunizations</h3><p>Childhood immunization schedules, flu shots, travel vaccines, and preventive inoculations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE APPOINTMENT -->
+<section class="booking-section" id="book">
+  <div class="section-inner">
+    <div class="booking-grid">
+      <div class="booking-info">
+        <div class="ornament" style="justify-content:flex-start">
+          <span class="ornament-line" style="width:30px"></span>✦
+        </div>
+        <span class="section-label" style="text-align:left; display:block; margin-bottom:8px;">Schedule a Visit</span>
+        <h2>Schedule at Jennings Family Healthcare</h2>
+        <p>Choose an available date and time below to self-schedule your appointment. Walk-ins are always welcome too.</p>
+        <ul class="booking-perks">
+          <li>Same-day appointments available</li>
+          <li>Walk-ins always welcome</li>
+          <li>Accepting new patients</li>
+          <li>All ages welcome</li>
+        </ul>
+      </div>
+      <div class="scheduler-wrap">
+        <h3>Select a Date &amp; Time</h3>
+        <div class="cal-nav">
+          <button id="calPrev" aria-label="Previous month">&#8249;</button>
+          <span class="cal-month" id="calMonth"></span>
+          <button id="calNext" aria-label="Next month">&#8250;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span><span class="cal-legend-dot avail"></span> Available</span>
+          <span><span class="cal-legend-dot selected"></span> Selected</span>
+        </div>
+        <div class="time-slots" id="timeSlots">
+          <div class="time-slots-label" id="timeSlotsLabel">Available Times</div>
+          <div class="time-slots-grid" id="timeSlotsGrid"></div>
+        </div>
+        <div class="confirm-section" id="confirmSection">
+          <div class="confirm-summary" id="confirmSummary"></div>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" id="cfName" placeholder="First name"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" id="clName" placeholder="Last name"></div>
+          </div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="cPhone" placeholder="(337) 555-0000"></div>
+          <div class="form-group">
+            <label>Type of Visit</label>
+            <select id="cVisitType">
+              <option>Select a service...</option>
+              <option>Primary Care / Annual Exam</option>
+              <option>Walk-In / Urgent Visit</option>
+              <option>Pediatric Visit</option>
+              <option>Women's Health</option>
+              <option>Chronic Disease Management</option>
+              <option>Immunizations</option>
+            </select>
+          </div>
+          <button class="btn-form" id="confirmBtn">Confirm Appointment ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OTHER LOCATIONS -->
+<div class="other-locations">
+  <div style="text-align:center">
+    <span class="section-label">Other Clinics</span>
+    <h2 class="section-title">Visit Our Other Locations</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="other-grid">
+    <a href="rayne.html" class="other-card">
+      <h3>Rayne Family Healthcare</h3>
+      <p>904 The Boulevard, Rayne, LA 70578</p>
+      <span class="other-phone">(337) 393-2052</span>
+    </a>
+    <a href="iota.html" class="other-card">
+      <h3>Iota Family Healthcare</h3>
+      <p>119 S. 5th Street, Suite B, Iota, LA 70543</p>
+      <span class="other-phone">(337) 779-6000</span>
+    </a>
+    <a href="pine-prairie.html" class="other-card">
+      <h3>Pine Prairie Family Healthcare</h3>
+      <p>1015 Sanders Street, Pine Prairie, LA 70576</p>
+      <span class="other-phone">(337) 599-2850</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo-row" style="text-decoration:none">
+        <span class="logo-flower">✿</span>
+        <div class="logo-wrap">
+          <span class="logo-name">Doucet Family Healthcare</span>
+          <span class="logo-sub">Family Healthcare</span>
+        </div>
+      </a>
+      <p class="footer-desc">Compassionate, community-centered healthcare serving the families of Acadiana, Louisiana.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Locations</h4>
+      <a href="rayne.html">Rayne</a>
+      <a href="iota.html">Iota</a>
+      <a href="jennings.html">Jennings</a>
+      <a href="pine-prairie.html">Pine Prairie</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Primary Care</a>
+      <a href="#services">Walk-In Care</a>
+      <a href="#services">Pediatric Care</a>
+      <a href="#services">Women's Health</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+13372463210">(337) 246-3210</a>
+      <a href="#book">Schedule Online</a>
+      <a href="index.html">Main Website</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 Doucet Family Healthcare. All rights reserved.</span>
+    <span>Jennings Family Healthcare — A Doucet Family Healthcare Clinic</span>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+<script>
+  var menuToggle = document.querySelector('.menu-toggle');
+  var mobileNav = document.getElementById('mobileNav');
+  menuToggle.addEventListener('click', function() { this.classList.toggle('active'); mobileNav.classList.toggle('open'); document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : ''; });
+  function closeMenu() { menuToggle.classList.remove('active'); mobileNav.classList.remove('open'); document.body.style.overflow = ''; }
+
+  var backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() { backToTop.classList.toggle('visible', window.scrollY > 400); });
+  backToTop.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  var observer = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+  /* ── Calendar Scheduler ── */
+  (function() {
+    var today = new Date();var currentMonth=today.getMonth();var currentYear=today.getFullYear();var selectedDate=null;var selectedTime=null;
+    var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var dayLabels=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var calMonth=document.getElementById('calMonth'),calGrid=document.getElementById('calGrid'),calPrev=document.getElementById('calPrev'),calNext=document.getElementById('calNext');
+    var timeSlots=document.getElementById('timeSlots'),timeSlotsGrid=document.getElementById('timeSlotsGrid'),timeSlotsLabel=document.getElementById('timeSlotsLabel');
+    var confirmSection=document.getElementById('confirmSection'),confirmSummary=document.getElementById('confirmSummary'),confirmBtn=document.getElementById('confirmBtn');
+    function getSlots(date){var day=date.getDay();if(day===0||day===6)return[];var slots=[],end=day===5?12:17;for(var h=8;h<end;h++){slots.push(fmtH(h,0));if(h<end-1||(h===end-1&&day!==5))slots.push(fmtH(h,30));}var seed=date.getDate()*7+date.getMonth()*13;return slots.filter(function(_,i){return(seed+i*3)%5!==0;});}
+    function fmtH(h,m){var ap=h>=12?'PM':'AM';var hr=h>12?h-12:h;return hr+':'+(m===0?'00':m)+' '+ap;}
+    function renderCalendar(){calMonth.textContent=months[currentMonth]+' '+currentYear;calGrid.innerHTML='';dayLabels.forEach(function(d){var el=document.createElement('div');el.className='cal-day-label';el.textContent=d;calGrid.appendChild(el);});var firstDay=new Date(currentYear,currentMonth,1).getDay(),dim=new Date(currentYear,currentMonth+1,0).getDate();for(var i=0;i<firstDay;i++){var e=document.createElement('div');e.className='cal-day empty';calGrid.appendChild(e);}for(var d=1;d<=dim;d++){var el=document.createElement('div');el.className='cal-day';el.textContent=d;var date=new Date(currentYear,currentMonth,d),dow=date.getDay(),isPast=date<new Date(today.getFullYear(),today.getMonth(),today.getDate());if(dow===0||dow===6){el.classList.add('weekend');}else if(isPast){el.classList.add('past');}else{el.classList.add('available');el.dataset.date=currentYear+'-'+(currentMonth+1)+'-'+d;el.addEventListener('click',selectDate);}if(selectedDate&&date.toDateString()===selectedDate.toDateString()){el.classList.add('selected');el.classList.remove('available');}calGrid.appendChild(el);}}
+    function selectDate(e){var p=e.target.dataset.date.split('-');selectedDate=new Date(p[0],p[1]-1,p[2]);selectedTime=null;renderCalendar();showTimeSlots();confirmSection.classList.remove('visible');}
+    function showTimeSlots(){var slots=getSlots(selectedDate),ds=selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});timeSlotsLabel.textContent='Available times for '+ds;timeSlotsGrid.innerHTML='';if(!slots.length){timeSlotsGrid.innerHTML='<div style="grid-column:1/-1;text-align:center;color:var(--text-body);font-size:0.85rem;padding:16px 0;">No availability on this day.</div>';}else{slots.forEach(function(slot){var btn=document.createElement('div');btn.className='time-slot';btn.textContent=slot;btn.addEventListener('click',function(){selectedTime=slot;document.querySelectorAll('.time-slot').forEach(function(s){s.classList.remove('selected');});btn.classList.add('selected');showConfirm();});timeSlotsGrid.appendChild(btn);});}timeSlots.classList.add('visible');}
+    function showConfirm(){var ds=selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});confirmSummary.innerHTML='<strong>Your Appointment</strong><br>📅 '+ds+'<br>⏰ '+selectedTime+'<br>📍 Jennings Family Healthcare';confirmSection.classList.add('visible');}
+    calPrev.addEventListener('click',function(){if(currentMonth===today.getMonth()&&currentYear===today.getFullYear())return;currentMonth--;if(currentMonth<0){currentMonth=11;currentYear--;}renderCalendar();});
+    calNext.addEventListener('click',function(){currentMonth++;if(currentMonth>11){currentMonth=0;currentYear++;}renderCalendar();});
+    confirmBtn.addEventListener('click',function(){var fn=document.getElementById('cfName').value,ln=document.getElementById('clName').value,ph=document.getElementById('cPhone').value;if(!fn||!ln||!ph){alert('Please fill in your name and phone number.');return;}var ds=selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});alert('Appointment requested!\\n\\n'+fn+' '+ln+'\\n'+ds+' at '+selectedTime+'\\nJennings Family Healthcare\\n\\nWe will confirm your appointment shortly.');selectedDate=null;selectedTime=null;timeSlots.classList.remove('visible');confirmSection.classList.remove('visible');renderCalendar();});
+    renderCalendar();
+  })();
+</script>
+
+</body>
+</html>
