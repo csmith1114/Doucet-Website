@@ -30,12 +30,15 @@
 
   html { scroll-behavior: smooth; }
 
+  html { overflow-x: hidden; }
   body {
     background: var(--cream);
     color: var(--charcoal);
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
   }
 
   /* ── TOP BAR ── */
@@ -917,8 +920,10 @@
   }
 
   /* Center the lone last card when team count is 7 (3+3+1) */
-  .team-grid .team-card:nth-child(7):last-child {
-    grid-column: 2 / 3;
+  @media (min-width: 901px) {
+    .team-grid .team-card:nth-child(7):last-child {
+      grid-column: 2 / 3;
+    }
   }
 
   .team-solo {
