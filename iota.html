@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Iota Family Healthcare – Doucet Family Healthcare</title>
+<meta name="description" content="Iota Family Healthcare — compassionate, walk-in friendly family medicine in Iota, LA. Primary, pediatric, women's health, and chronic care under Nicole Doucet, FNP.">
+<meta property="og:title" content="Iota Family Healthcare – Doucet Family Healthcare">
+<meta property="og:description" content="Walk-in friendly family medicine in Iota, LA. Primary, pediatric, women's health, and chronic care under Nicole Doucet, FNP.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://csmith1114.github.io/Doucet-Website/iota.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='56'%3E%E2%9C%BF%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -151,7 +157,7 @@
     margin-bottom: 16px;
   }
 
-  .clinic-hero h1 em { font-style: italic; color: var(--teal-dark); }
+  .clinic-hero h1 .title-accent { font-style: italic; color: var(--teal-dark); }
 
   .clinic-badge {
     display: inline-block;
@@ -457,7 +463,7 @@
     <div class="clinic-hero-grid">
       <div>
         <div class="clinic-badge">Flagship Clinic · Est. 2012</div>
-        <h1>Iota Family <em>Healthcare</em></h1>
+        <h1>Iota Family <span class="title-accent">Healthcare</span></h1>
         <p class="clinic-hero-desc">The original Doucet Family Healthcare clinic, proudly serving the Iota community since 2012. As a Medicare-certified Rural Health Clinic, we provide family medicine, women's health, and comprehensive primary care for patients of all ages.</p>
         <ul class="clinic-details-list">
           <li><div class="detail-icon">📍</div> 119 S. 5th Street, Suite B, Iota, LA 70543</li>
@@ -497,12 +503,12 @@
     <h2 class="section-title">Services at Iota</h2>
     <div class="section-divider"></div>
     <div class="services-grid">
-      <div class="service-card reveal"><div class="service-icon">🌱</div><h3>Primary Care</h3><p>Comprehensive family medicine for patients of all ages, from routine checkups to ongoing health management.</p></div>
-      <div class="service-card reveal"><div class="service-icon">⚡</div><h3>Walk-In Care</h3><p>No appointment needed for urgent health concerns. Walk in during business hours for prompt evaluation and treatment.</p></div>
-      <div class="service-card reveal"><div class="service-icon">👶</div><h3>Pediatric Care</h3><p>Well-child visits, developmental screenings, and childhood vaccinations in a family-friendly environment.</p></div>
-      <div class="service-card reveal"><div class="service-icon">💊</div><h3>Chronic Disease Management</h3><p>Ongoing care plans for diabetes, hypertension, asthma, and other chronic conditions.</p></div>
-      <div class="service-card reveal"><div class="service-icon">👩</div><h3>Women's Health / OB-GYN</h3><p>OB/GYN services, annual wellness exams, and women's health screenings from our specialized providers.</p></div>
-      <div class="service-card reveal"><div class="service-icon">💉</div><h3>Immunizations</h3><p>Childhood immunization schedules, flu shots, travel vaccines, and preventive inoculations.</p></div>
+      <div class="service-card reveal" id="svc-primary"><div class="service-icon">🌱</div><h3>Primary Care</h3><p>Comprehensive family medicine for patients of all ages, from routine checkups to ongoing health management.</p></div>
+      <div class="service-card reveal" id="svc-walkin"><div class="service-icon">⚡</div><h3>Walk-In Care</h3><p>No appointment needed for urgent health concerns. Walk in during business hours for prompt evaluation and treatment.</p></div>
+      <div class="service-card reveal" id="svc-pediatric"><div class="service-icon">👶</div><h3>Pediatric Care</h3><p>Well-child visits, developmental screenings, and childhood vaccinations in a family-friendly environment.</p></div>
+      <div class="service-card reveal" id="svc-chronic"><div class="service-icon">💊</div><h3>Chronic Disease Management</h3><p>Ongoing care plans for diabetes, hypertension, asthma, and other chronic conditions.</p></div>
+      <div class="service-card reveal" id="svc-womens"><div class="service-icon">👩</div><h3>Women's Health / OB-GYN</h3><p>OB/GYN services, annual wellness exams, and women's health screenings from our specialized providers.</p></div>
+      <div class="service-card reveal" id="svc-immunizations"><div class="service-icon">💉</div><h3>Immunizations</h3><p>Childhood immunization schedules, flu shots, travel vaccines, and preventive inoculations.</p></div>
     </div>
   </div>
 </section>
@@ -615,10 +621,10 @@
     </div>
     <div class="footer-col">
       <h4>Services</h4>
-      <a href="#services">Primary Care</a>
-      <a href="#services">Walk-In Care</a>
-      <a href="#services">Pediatric Care</a>
-      <a href="#services">Women's Health</a>
+      <a href="#svc-primary">Primary Care</a>
+      <a href="#svc-walkin">Walk-In Care</a>
+      <a href="#svc-pediatric">Pediatric Care</a>
+      <a href="#svc-womens">Women's Health</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>

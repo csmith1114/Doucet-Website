@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Doucet Family Healthcare – Family Healthcare in Acadiana</title>
+<meta name="description" content="Doucet Family Healthcare — compassionate, comprehensive family medicine across Acadiana, Louisiana. Four clinic locations: Rayne, Iota, Jennings, and Pine Prairie.">
+<meta property="og:title" content="Doucet Family Healthcare – Family Healthcare in Acadiana">
+<meta property="og:description" content="Compassionate, comprehensive family medicine across Acadiana, Louisiana. Four clinic locations under Nicole Doucet, FNP.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://csmith1114.github.io/Doucet-Website/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='56'%3E%E2%9C%BF%3C/text%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -224,7 +230,7 @@
     margin-bottom: 24px;
   }
 
-  .hero h1 em {
+  .hero h1 .title-accent {
     font-style: italic;
     color: var(--teal-dark);
   }
@@ -387,6 +393,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+  }
+  @media (min-width: 901px) {
+    .services-grid > .service-card:last-child:nth-child(3n+1) { grid-column: 2; }
   }
 
   .service-card {
@@ -1334,7 +1343,7 @@
   <div class="hero-inner">
     <div class="hero-left">
       <div class="hero-eyebrow">Doucet Family Healthcare</div>
-      <h1>Your Family's Health, <em>Our Family's</em> Calling</h1>
+      <h1>Your Family's Health, <span class="title-accent">Our Family's</span> Calling</h1>
       <p class="hero-desc">Compassionate, comprehensive care for every member of your family — from newborns to seniors. Rooted in Acadiana, committed to your wellbeing.</p>
       <div class="hero-btns">
         <a href="#locations" class="btn-primary">Schedule an Appointment</a>
@@ -1376,43 +1385,43 @@
     <div class="section-divider"></div>
     <p class="section-sub">We offer a full spectrum of healthcare services designed to keep your entire family healthy at every stage of life.</p>
     <div class="services-grid">
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-primary">
         <div class="service-icon">🌱</div>
         <h3>Primary Care</h3>
         <p>Annual wellness exams, chronic disease management, immunizations, and preventive health screenings for all ages.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-functional">
         <div class="service-icon">🌿</div>
         <h3>Functional &amp; Preventative Medicine</h3>
         <p>Whole-person, root-cause care that looks at nutrition, lifestyle, and long-term wellness — not just symptoms.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-walkin">
         <div class="service-icon">⚡</div>
         <h3>Urgent Care</h3>
         <p>Walk-in care for minor injuries, infections, flu, and other illnesses that need prompt attention without an ER visit.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-pediatric">
         <div class="service-icon">👶</div>
         <h3>Pediatric Care</h3>
         <p>Well-child visits, developmental screenings, vaccinations, and compassionate care tailored for children of all ages.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-chronic">
         <div class="service-icon">💊</div>
         <h3>Chronic Disease Management</h3>
         <p>Ongoing care for diabetes, hypertension, asthma, and other conditions with personalized treatment plans.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-lab">
         <div class="service-icon">🧪</div>
         <h3>Lab & Diagnostics</h3>
         <p>On-site lab services, blood work, and rapid diagnostic testing for fast and accurate results.</p>
 
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" id="svc-immunizations">
         <div class="service-icon">💉</div>
         <h3>Immunizations</h3>
         <p>Travel vaccines, flu shots, childhood immunization schedules, and COVID-19 booster management.</p>
@@ -1665,10 +1674,10 @@
     </div>
     <div class="footer-col">
       <h4>Services</h4>
-      <a href="#services">Primary Care</a>
-      <a href="#services">Walk-In Care</a>
-      <a href="#services">Pediatric Care</a>
-      <a href="#services">Women's Health</a>
+      <a href="#svc-primary">Primary Care</a>
+      <a href="#svc-walkin">Urgent Care</a>
+      <a href="#svc-pediatric">Pediatric Care</a>
+      <a href="#svc-chronic">Chronic Care</a>
     </div>
     <div class="footer-col">
       <h4>Patient Info</h4>
