@@ -489,7 +489,7 @@
 
   .about-img-placeholder {
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 4/3;
     background: linear-gradient(145deg, var(--teal-pale), var(--cream-dark));
     border-radius: 4px;
     display: flex;
@@ -501,6 +501,14 @@
     letter-spacing: 0.1em;
     position: relative;
     overflow: hidden;
+  }
+
+  .about-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
 
   .about-img-placeholder::after {
@@ -981,6 +989,14 @@
     background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235f9e8e' fill-opacity='0.06'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
   }
 
+  .team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 22%;
+    display: block;
+  }
+
   .team-card:hover .team-photo { border-color: var(--teal); }
 
   .team-card h3 {
@@ -1007,6 +1023,22 @@
     max-width: 280px;
     margin: 0 auto;
   }
+
+  .team-bio details { text-align: left; }
+
+  .team-bio summary {
+    color: var(--teal-dark);
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-align: center;
+    list-style: none;
+  }
+
+  .team-bio summary::-webkit-details-marker { display: none; }
+  .team-bio summary::after { content: ' +'; }
+  .team-bio details[open] summary::after { content: ' −'; }
+  .team-bio details p { margin-top: 12px; }
 
   /* ── FAQ ── */
   .faq-section { background: var(--cream); }
@@ -1495,7 +1527,7 @@
     <div class="about-grid">
       <div class="about-img-wrap reveal-left">
         <div class="about-img-placeholder">
-          [ Clinic / Team Photo ]
+          <img src="3K2A9358.jpg" alt="Doucet Family Healthcare team" loading="lazy">
         </div>
         <div class="about-accent"></div>
         <div class="about-badge">
@@ -1514,11 +1546,10 @@
           Founded in 2012 by Nicole Doucet, FNP, Doucet Family Healthcare began as a single clinic in Iota with a simple mission: bring quality, compassionate healthcare to rural Acadiana communities that need it most.
         </p>
         <p class="about-desc">
-          Today, we've grown to four Medicare-certified Rural Health Clinics across Southwest Louisiana — in Iota, Rayne, Jennings, and Pine Prairie — staffed by a team of dedicated nurse practitioners who treat patients like family. Alongside traditional primary care, we also offer functional and preventative medicine for patients seeking root-cause, whole-person wellness.
+          Today, we've grown to four clinics across Southwest Louisiana — in Iota, Rayne, Jennings, and Pine Prairie — staffed by a team of dedicated nurse practitioners who treat patients like family. Alongside traditional primary care, we also offer functional and preventative medicine for patients seeking root-cause, whole-person wellness.
         </p>
         <ul class="about-features">
           <li>Four clinics across Acadiana</li>
-          <li>Medicare-certified Rural Health Clinics</li>
           <li>Walk-ins welcome at all locations</li>
           <li>Accepting new patients of all ages</li>
         </ul>
@@ -1538,46 +1569,56 @@
     <p class="section-sub">Our dedicated team of professionals is committed to providing personalized, compassionate care for you and your family.</p>
     <div class="team-grid">
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
+        <div class="team-photo"><img src="3K2A9221.jpg" alt="Nicole Doucet, FNP, WHNP" loading="lazy"></div>
         <h3>Nicole Doucet, FNP, WHNP</h3>
         <span class="team-role">Founder &amp; Lead Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Nicole</summary><p>Nicole Doucet doesn’t just manage healthcare—she lives it. A graduate of Iota High (1992) and LSUE (1995), she spent her early career as an RN before earning her Master’s as a Women’s Health Nurse Practitioner from Northwestern in 2002 and a dual certification in Family Practice in 2010.</p><p>Her diverse 30-year career spans OB/GYN specialty care, long-term care, and rural health administration. In 2012, she turned her clinical expertise into entrepreneurship, opening the first clinic in Iota. Today, that vision has grown into a four-clinic network including Pine Prairie (2014), Rayne (2019), and Jennings (2024).</p><p>Behind her clinical brilliance is a deeply rooted family woman. Married to her high school sweetheart for three decades, she is the proud mom of four, a mother-in-law, and a doting “Mimi” to one granddaughter, with another on the way. She brings that same fierce, maternal devotion to the health and wellness of every patient who walks through our doors.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
+        <div class="team-photo"><img src="3K2A9247.jpg" alt="Lydia Domingue, FNP" loading="lazy"></div>
         <h3>Lydia Domingue, FNP</h3>
         <span class="team-role">Family Nurse Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Lydia</summary><p>Lydia is an experienced Nurse Practitioner of six years who joined our team this past November. She brings an impressive and diverse clinical background, with expertise spanning emergency medicine, urgent care, occupational medicine, cardiovascular short-stay, and outpatient surgery.</p><p>Outside of the clinic, she is a big fan of great music, delicious food, and quality time spent with her family. We are grateful for the versatile, high-level expertise Lydia brings to our patients every day.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
+        <div class="team-photo"><img src="3K2A8989.jpg" alt="Olanta Kingsby, FNP" loading="lazy"></div>
         <h3>Olanta Kingsby, FNP</h3>
         <span class="team-role">Family Nurse Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Olanta</summary><p>Originally from Covington, Louisiana, Olanta earned her undergraduate degree from Louisiana State University at Alexandria and her Master of Science in Nursing from the University of South Alabama.</p><p>She brings 10 years of experience in Mother-Baby care, making her an incredible asset to our patients and families. When she isn’t at the clinic, she enjoys spending time with her husband of eight years and their two beautiful daughters.</p><p>Whether you need comprehensive family medicine or specialized support, Olanta is dedicated to providing compassionate, expert care and partnering with you through every stage of your health journey.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
-        <h3>Kaitlyn, FNP</h3>
+        <div class="team-photo"><img src="3K2A9046.jpg" alt="Katelyn, FNP" loading="lazy"></div>
+        <h3>Katelyn, FNP</h3>
         <span class="team-role">Family Nurse Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Katelyn</summary><p>Katelyn graduated from high school in 2010 and earned her Bachelor of Science in Nursing from McNeese State University in 2015. She spent six years caring for patients in orthopedic and neurology nursing before returning to McNeese, graduating in 2021 as a Nurse Practitioner.</p><p>For the past five years, Katelyn has proudly served her community as a Nurse Practitioner, combining clinical expertise with a compassionate, patient-centered approach to care.</p><p>Outside of work, Katelyn has been happily married for 10 years and is the proud mother of two children and one beloved dog. She loves traveling, camping, and spending quality time with family and friends. If there’s a taco food truck nearby, you’ll probably find Katelyn there—she never passes up a good taco.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
+        <div class="team-photo"><img src="3K2A9143.jpg" alt="Chelsea, FNP" loading="lazy"></div>
         <h3>Chelsea, FNP</h3>
         <span class="team-role">Family Nurse Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Chelsea</summary><p>Chelsea is proof that you can take the girl out of Pine Prairie, but you can’t take Pine Prairie out of the girl. After graduating from Pine Prairie High in 2014, Chelsea earned her nursing degrees at LSUA and spent years cultivating her clinical skills—first saving lives in the ICU at OGH, and later serving rural communities.</p><p>She earned her Family Nurse Practitioner degree from the University of South Alabama in 2024 and joined Pine Prairie Family Healthcare full-time in September 2025. Chelsea balances traditional family medicine with an eye for modern wellness and preventative health.</p><p>When she isn’t chasing her two young children alongside her high school sweetheart husband, she is cultivating her massive indoor and outdoor plant collection. When you visit to discuss your health goals, you’ll get a little extra oxygen and a lot of small-town heart.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">👩‍⚕️</div>
+        <div class="team-photo"><img src="3K2A8994.jpg" alt="Angie, FNP" loading="lazy"></div>
         <h3>Angie, FNP</h3>
         <span class="team-role">Family Nurse Practitioner</span>
-        <p class="team-bio">Bio coming soon.</p>
+        <div class="team-bio"><details><summary>Meet Angie</summary><p>Angie graduated from McNeese State University with her BSN in December 1994 and her MSN in 2015. Her nursing career spans postpartum, med-surg, education, occupational health, home infusions, and oncology—her passion. She was instrumental in starting an outpatient treatment center and a Breast Health Navigation program, and also helped develop a hospital EMR system.</p><p>Since becoming a Family Nurse Practitioner, she has focused on serving our communities through compassionate and thorough patient care in rural health clinics. Angie has been married for 39 years to a veteran and former professional boxer. Together they enjoy animals and are the proud parents of a rescue bully named Rocky. Their family includes seven children, 22 grandchildren, and four great-grandchildren.</p><p>When she is not at work, Angie loves crafting and runs a crafting business with her daughter.</p></details></div>
       </div>
       <div class="team-card reveal">
-        <div class="team-photo">🧑‍⚕️</div>
+        <div class="team-photo"><img src="3K2A8901.jpg" alt="Lauren White, RN" loading="lazy"></div>
+        <h3>Lauren White</h3>
+        <span class="team-role">Registered Nurse</span>
+        <div class="team-bio"><details><summary>Meet Lauren</summary><p>Lauren, RN, will graduate as a Family Nurse Practitioner this August. With an extensive background in emergency medicine, trauma, and functional health, she will be pulling double duty leading our Functional Health Clinic and serving patients on our rural healthcare side.</p><p>She has been married for three years, and they are expecting their first child. Whether you are focusing on preventative wellness or chronic care, Lauren is ready to partner with you on your health journey.</p></details></div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-photo"><img src="3K2A9123.jpg" alt="Brittany, Nurse Practitioner" loading="lazy"></div>
+        <h3>Brittany, NP</h3>
+        <span class="team-role">Nurse Practitioner</span>
+        <div class="team-bio"><details><summary>Meet Brittany</summary><p>Brittany graduated with her Master of Science in Nursing in May 2026 and brings more than 17 years of healthcare experience to her role as a Nurse Practitioner. Before becoming an NP, Brittany served as a medic on an ambulance for 10 years and worked as a registered nurse for seven years in newborn nursery, postpartum, and home health settings.</p><p>Her diverse background has given her a strong foundation in caring for patients across all stages of life. Brittany is married and the proud mother of two daughters. Outside of work, she enjoys spending time with her family and being outdoors. She is passionate about helping others and strives to make every patient feel welcomed, heard, and supported in their healthcare journey.</p></details></div>
+      </div>
+      <div class="team-card reveal">
         <h3>David Ware, MD</h3>
         <span class="team-role">Collaborating Physician</span>
-        <p class="team-bio">Bio coming soon.</p>
       </div>
     </div>
   </div>
